@@ -1,15 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
+import React from "react";
+import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+describe("Testing our React application", () => {
+  it("Fetch posts after login", async () => {
+    render(<App />);
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+    expect(screen.getByText(/Modern React Testing/i)).toBeInTheDocument();
+  });
 });
